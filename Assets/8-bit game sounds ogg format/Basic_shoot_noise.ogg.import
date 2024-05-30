@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Basic_shoot_noise.ogg-320462b52e3f9814536fc057e74f5c7c.oggstr"
+
+[deps]
+
+source_file="res://Assets/8-bit game sounds ogg format/Basic_shoot_noise.ogg"
+dest_files=[ "res://.import/Basic_shoot_noise.ogg-320462b52e3f9814536fc057e74f5c7c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Select.ogg-394d80a7751c249526e0e06ac9a4e2db.oggstr"
+
+[deps]
+
+source_file="res://Assets/8-bit game sounds ogg format/Select.ogg"
+dest_files=[ "res://.import/Select.ogg-394d80a7751c249526e0e06ac9a4e2db.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

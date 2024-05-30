@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Damage_taken.ogg-05584cd94a7e55ff40899109f79c7aaa.oggstr"
+
+[deps]
+
+source_file="res://Assets/8-bit game sounds ogg format/Damage_taken.ogg"
+dest_files=[ "res://.import/Damage_taken.ogg-05584cd94a7e55ff40899109f79c7aaa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
