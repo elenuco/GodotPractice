@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Assets/Fondos/middle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Suelos/block-big.png" type="Texture" id=2]
@@ -7,15 +7,22 @@
 [ext_resource path="res://Assets/Personaje/Run (32x32).png" type="Texture" id=5]
 [ext_resource path="res://Escenas/personajeJugador2D.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Items/Fruits/Bananas.png" type="Texture" id=7]
+[ext_resource path="res://Escenas/Suelo.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 528, 17 )
+
+[sub_resource type="RectangleShape2D" id=50]
+extents = Vector2( 536.75, 20 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 17, 306.5 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.2727, 16 )
+
+[sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 10.5, 11.2 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -244,6 +251,9 @@ animations = [ {
 "speed": 17.0
 } ]
 
+[sub_resource type="CircleShape2D" id=49]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id=48]
 radius = 16.0
 
@@ -267,6 +277,7 @@ texture = ExtResource( 1 )
 flip_h = true
 
 [node name="Suelo" type="Node2D" parent="."]
+script = ExtResource( 8 )
 
 [node name="Block-big" type="Sprite" parent="Suelo"]
 position = Vector2( 184, 584 )
@@ -427,6 +438,12 @@ texture = ExtResource( 2 )
 position = Vector2( 504, 583 )
 shape = SubResource( 2 )
 
+[node name="Area2D" type="Area2D" parent="Suelo/sueloColisionNoSirve"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo/sueloColisionNoSirve/Area2D"]
+position = Vector2( 509.25, 584 )
+shape = SubResource( 50 )
+
 [node name="LateralIzquierdo" type="StaticBody2D" parent="Suelo"]
 position = Vector2( 1024, 0 )
 
@@ -454,6 +471,12 @@ position = Vector2( -106.5, -6.4 )
 scale = Vector2( 0.6875, 0.7 )
 shape = SubResource( 1 )
 
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2( -107.25, -6.4 )
+shape = SubResource( 51 )
+
 [node name="personajeJugador2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 6 )
 speed = 300
@@ -463,7 +486,7 @@ position = Vector2( 192, 536 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 27 )
 animation = "ranitaEspera"
-frame = 3
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="personajeJugador2D"]
@@ -476,14 +499,40 @@ shape = SubResource( 28 )
 position = Vector2( 190, 516 )
 shape = SubResource( 29 )
 
-[node name="Platanao" type="RigidBody2D" parent="."]
+[node name="Platano" type="RigidBody2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Platanao"]
+[node name="Area2D" type="Area2D" parent="Platano"]
 position = Vector2( 446, 120 )
 scale = Vector2( 2, 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Platano/Area2D"]
 frames = SubResource( 30 )
 animation = "bananaFall"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platanao"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platano/Area2D"]
+shape = SubResource( 49 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platano"]
 position = Vector2( 446, 120 )
 shape = SubResource( 48 )
+
+[node name="Platano2" type="RigidBody2D" parent="."]
+position = Vector2( 190, 0 )
+
+[node name="Area2D" type="Area2D" parent="Platano2"]
+position = Vector2( 446, 120 )
+scale = Vector2( 2, 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Platano2/Area2D"]
+frames = SubResource( 30 )
+animation = "bananaFall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platano2/Area2D"]
+shape = SubResource( 49 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platano2"]
+position = Vector2( 446, 120 )
+shape = SubResource( 48 )
+
+[connection signal="area_entered" from="Suelo/sueloColisionNoSirve/Area2D" to="Suelo" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="personajeJugador2D/Area2D" to="personajeJugador2D" method="_on_Area2D_area_entered"]
