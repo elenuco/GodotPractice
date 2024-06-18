@@ -387,7 +387,7 @@ position = Vector2( 192, 536 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 27 )
 animation = "ranitaEspera"
-frame = 1
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="personajeJugador2D"]
@@ -404,4 +404,5 @@ shape = SubResource( 29 )
 position = Vector2( 118, 32 )
 
 [connection signal="area_entered" from="Suelo/sueloColisionNoSirve/Area2D" to="Suelo" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="RigidBody2D/Area2D" to="Suelo" method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="personajeJugador2D/Area2D" to="personajeJugador2D" method="_on_Area2D_area_entered"]

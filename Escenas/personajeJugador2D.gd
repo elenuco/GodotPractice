@@ -6,7 +6,7 @@ var direction = Vector2()
 #varable to describe the ammount of recolected Fruit
 var recolected=0
 #levantadno una funcion
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		direction.x = +speed
 		$AnimatedSprite.flip_h = false
